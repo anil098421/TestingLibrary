@@ -67,12 +67,12 @@ afterEvaluate {
                 
                 // These coordinates are crucial for JitPack
                 groupId = "com.github.anil098421"
-                artifactId = "MyNewLibrary"
-                version = "v1.0.4"
+                artifactId = rootProject.name
+                version = "v1.0.5"
                 
                 // Add all required POM elements for JitPack
                 pom {
-                    name.set("Android GIF Library")
+                    name.set(rootProject.name)
                     description.set("Android library with GIF support")
                     url.set("https://github.com/anil098421/MyNewLibrary")
                     

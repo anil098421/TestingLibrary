@@ -2,7 +2,9 @@ jdk:
   - openjdk11
 
 before_install:
-  - ./gradlew clean
+  - chmod +x gradlew
+  - git update-index --chmod=+x gradlew
 
 install:
-  - ./gradlew build :app:publishToMavenLocal 
+  - ./gradlew clean -Pgroup=com.github.anil098421
+  - ./gradlew build publishToMavenLocal -Pgroup=com.github.anil098421 
