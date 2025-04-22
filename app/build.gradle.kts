@@ -37,6 +37,13 @@ android {
     buildFeatures {
         dataBinding = true
     }
+    
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+            withJavadocJar()
+        }
+    }
 }
 
 afterEvaluate {
@@ -44,9 +51,30 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
-                groupId = "com.example"
-                artifactId = "myapplication"
+                groupId = "com.github.anil098421"
+                artifactId = "TestingLibrary"
                 version = "1.0"
+                
+                // Add proper POM information
+                pom {
+                    name.set("TestingLibrary")
+                    description.set("Android library with GIF drawable support")
+                    url.set("https://github.com/anil098421/TestingLibrary")
+                    
+                    licenses {
+                        license {
+                            name.set("MIT")
+                            url.set("https://opensource.org/licenses/MIT")
+                        }
+                    }
+                    developers {
+                        developer {
+                            id.set("anil098421")
+                            name.set("Anil")
+                            email.set("user@example.com")
+                        }
+                    }
+                }
             }
         }
     }
