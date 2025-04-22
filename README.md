@@ -1,85 +1,53 @@
-# Android GIF Library
+# Android GIF Drawable Library
 
-This is an Android library that provides GIF support using the android-gif-drawable library.
+This Android library provides GIF support using the [android-gif-drawable](https://github.com/koral--/android-gif-drawable) library.
 
-## How to Use This Library
+## Features
 
-### 1. Add the library to your project
+- Android library module that can be included in other Android projects
+- Provides GIF rendering capabilities
+- Includes data binding support
 
-#### Using JitPack (Recommended)
+## Installation
 
-Add JitPack repository to your root build.gradle.kts or settings.gradle.kts:
+To use this library in your Android project:
 
-```kotlin
-// In settings.gradle.kts
-dependencyResolutionManagement {
+1. Add the JitPack repository to your root build.gradle:
+```groovy
+allprojects {
     repositories {
-        // ... your existing repositories
-        maven { url = uri("https://jitpack.io") }
+        ...
+        maven { url 'https://jitpack.io' }
     }
 }
 ```
 
-Add the dependency to your app's build.gradle.kts:
-
-```kotlin
+2. Add the dependency to your app's build.gradle:
+```groovy
 dependencies {
-    implementation("com.github.anil098421:MyNewLibrary:v1.0.6") 
+    implementation 'com.github.anil098421:TestingLibrary:1.0'
 }
 ```
 
-#### For local development
+## Usage
+
+Once you've added the library dependency, you can use it in your Android project.
 
 ```kotlin
-// In settings.gradle.kts
-include(":your-app")
-include(":path-to-this-library") // For local development
-```
-
-```kotlin
-// In your app's build.gradle.kts
-dependencies {
-    implementation(project(":path-to-this-library"))
-}
-```
-
-### 2. Use GIF drawables in your application
-
-```kotlin
+// Example code to load a GIF
 import pl.droidsonroids.gif.GifImageView
 
-// In your XML layout
+// In your layout XML
 // <pl.droidsonroids.gif.GifImageView
 //    android:id="@+id/gifView"
 //    android:layout_width="match_parent"
-//    android:layout_height="wrap_content"
+//    android:layout_height="match_parent"
 //    android:src="@drawable/your_gif" />
 
-// In your Activity/Fragment
+// In your Activity or Fragment
 val gifImageView = findViewById<GifImageView>(R.id.gifView)
-// Additional configuration as needed
 ```
 
-## Troubleshooting
+## License
 
-If you encounter "Failed to resolve" errors:
-
-1. Make sure you've added the JitPack repository to your project
-2. Check if the version tag exists at https://jitpack.io/#anil098421/MyNewLibrary
-3. Try syncing your Gradle project after JitPack has built the library
-
-## Publishing
-
-### To JitPack
-
-1. Push your changes to GitHub
-2. Create a release tag on GitHub
-3. JitPack will automatically build the library when you access https://jitpack.io/#anil098421/MyNewLibrary
-
-### To Local Maven Repository
-
-```
-./gradlew publishToMavenLocal
-```
-
-This will make the library available in your local Maven repository.
+This library is licensed under the MIT License. 

@@ -1,11 +1,8 @@
 plugins {
     id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("maven-publish")
+    alias(libs.plugins.kotlin.android)
+    `maven-publish`
 }
-
-group = "com.github.anil098421"
-version = "v1.0.6"
 
 android {
     namespace = "com.example.myapplication"
@@ -13,6 +10,7 @@ android {
 
     defaultConfig {
         minSdk = 24
+        targetSdk = 35
         
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles("consumer-rules.pro")
@@ -39,41 +37,29 @@ android {
     buildFeatures {
         dataBinding = true
     }
-    
+}
+
+afterEvaluate {
     publishing {
-        singleVariant("release") {
-            withSourcesJar()
-            withJavadocJar()
+        publications {
+            create<MavenPublication>("release") {
+                from(components["release"])
+                groupId = "com.example"
+                artifactId = "myapplication"
+                version = "1.0"
+            }
         }
     }
 }
 
 dependencies {
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
-    implementation(libs.android.gif.drawable)
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.29")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
-}
-
-// Simple JitPack publishing configuration
-afterEvaluate {
-    publishing {
-        publications {
-            register<MavenPublication>("release") {
-                groupId = "com.github.anil098421"
-                artifactId = "MyNewLibrary"
-                version = "v1.0.6"
-
-                afterEvaluate {
-                    from(components["release"])
-                }
-            }
-        }
-    }
 }
