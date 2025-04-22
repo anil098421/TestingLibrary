@@ -6,9 +6,16 @@ plugins {
     id("maven-publish")
 }
 
-// Required for JitPack
-tasks.register("publishToMavenLocal") {
+// This is a workaround for JitPack
+val publishCommand = "publishToMavenLocal"
+val capitalized = publishCommand.replaceFirstChar { it.uppercase() }
+tasks.register(publishCommand) {
     group = "publishing"
-    description = "Publish all artifacts to the local Maven repository"
-    dependsOn(":app:publishToMavenLocal")
+    description = "Publishes all Maven publications to Maven Local"
+    dependsOn(gradle.includedBuilds.map { it.task(":$publishCommand") })
+}
+
+allprojects {
+    // Avoid issues with JitPack
+    group = "com.github.anil098421"
 }

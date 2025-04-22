@@ -4,6 +4,9 @@ plugins {
     id("maven-publish")
 }
 
+group = "com.github.anil098421"
+version = "v1.0.6"
+
 android {
     namespace = "com.example.myapplication"
     compileSdk = 35
@@ -58,37 +61,17 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
-// JitPack publishing configuration
+// Simple JitPack publishing configuration
 afterEvaluate {
     publishing {
         publications {
-            create<MavenPublication>("release") {
-                from(components["release"])
-                
-                // These coordinates are crucial for JitPack
+            register<MavenPublication>("release") {
                 groupId = "com.github.anil098421"
-                artifactId = rootProject.name
-                version = "v1.0.5"
-                
-                // Add all required POM elements for JitPack
-                pom {
-                    name.set(rootProject.name)
-                    description.set("Android library with GIF support")
-                    url.set("https://github.com/anil098421/MyNewLibrary")
-                    
-                    licenses {
-                        license {
-                            name.set("The Apache License, Version 2.0")
-                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                        }
-                    }
-                    
-                    developers {
-                        developer {
-                            id.set("anil098421")
-                            name.set("Anil Kumar")
-                        }
-                    }
+                artifactId = "MyNewLibrary"
+                version = "v1.0.6"
+
+                afterEvaluate {
+                    from(components["release"])
                 }
             }
         }

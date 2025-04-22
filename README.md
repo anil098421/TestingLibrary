@@ -24,7 +24,7 @@ Add the dependency to your app's build.gradle.kts:
 
 ```kotlin
 dependencies {
-    implementation("com.github.anil098421:MyNewLibrary:v1.0.4") 
+    implementation("com.github.anil098421:MyNewLibrary:v1.0.6") 
 }
 ```
 
@@ -59,6 +59,14 @@ import pl.droidsonroids.gif.GifImageView
 val gifImageView = findViewById<GifImageView>(R.id.gifView)
 // Additional configuration as needed
 ```
+
+## Troubleshooting
+
+If you encounter "Failed to resolve" errors:
+
+1. Make sure you've added the JitPack repository to your project
+2. Check if the version tag exists at https://jitpack.io/#anil098421/MyNewLibrary
+3. Try syncing your Gradle project after JitPack has built the library
 
 ## Publishing
 
