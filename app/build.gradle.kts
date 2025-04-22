@@ -58,22 +58,37 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
 }
 
+// JitPack publishing configuration
 afterEvaluate {
     publishing {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
                 
-                groupId = "com.example.myapplication"
+                groupId = "com.github.anil098421"
                 artifactId = "android-gif-library"
                 version = "1.0.0"
-            }
-        }
-        
-        repositories {
-            maven {
-                name = "localRepo"
-                url = uri("${project.buildDir}/repo")
+                
+                // Add all required POM elements for JitPack
+                pom {
+                    name.set("Android GIF Library")
+                    description.set("Android library with GIF support")
+                    url.set("https://github.com/anil098421/MyNewLibrary")
+                    
+                    licenses {
+                        license {
+                            name.set("The Apache License, Version 2.0")
+                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                        }
+                    }
+                    
+                    developers {
+                        developer {
+                            id.set("anil098421")
+                            name.set("Anil Kumar")
+                        }
+                    }
+                }
             }
         }
     }

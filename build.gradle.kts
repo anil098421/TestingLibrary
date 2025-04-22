@@ -5,3 +5,8 @@ plugins {
     alias(libs.plugins.kotlin.android) apply false
     id("maven-publish")
 }
+
+// Required for JitPack
+tasks.register("publishToMavenLocal") {
+    dependsOn(gradle.includedBuild("app").task(":publishToMavenLocal"))
+}
