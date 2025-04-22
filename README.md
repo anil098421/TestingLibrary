@@ -36,7 +36,7 @@ Add the dependency:
 
 ```gradle
 dependencies {
-    implementation 'com.github.anil098421:MyDemoLibrary:v1.0.0'
+    implementation 'com.github.anil098421:MyDemoLibrary:v1.0.2'
 }
 ```
 
@@ -44,7 +44,7 @@ Or in Kotlin DSL:
 
 ```kotlin
 dependencies {
-    implementation("com.github.anil098421:MyDemoLibrary:v1.0.0")
+    implementation("com.github.anil098421:MyDemoLibrary:v1.0.2")
 }
 ```
 
