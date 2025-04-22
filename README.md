@@ -1,71 +1,60 @@
-# Android GIF Drawable Library
+# Android GIF Library
 
-A wrapper library for the popular [android-gif-drawable](https://github.com/koral--/android-gif-drawable) that provides GIF support for Android applications.
+This is an Android library that provides GIF support using the android-gif-drawable library.
 
-## Features
+## How to Use This Library
 
-- Display GIF animations in your Android application
-- Support for various GIF formats
-- Easy integration with Android projects
+### 1. Add the library to your project
 
-## Installation
-
-Add the JitPack repository to your build file. Add it in your root build.gradle at the end of repositories:
-
-```gradle
-allprojects {
-    repositories {
-        ...
-        maven { url 'https://jitpack.io' }
-    }
-}
-```
-
-Or in settings.gradle.kts (for newer projects):
+#### In your settings.gradle.kts file:
 
 ```kotlin
 dependencyResolutionManagement {
     repositories {
-        ...
-        maven { url = uri("https://jitpack.io") }
+        // ... your existing repositories
+        maven { url = uri("path/to/this/library/maven-repo") }
     }
 }
+
+include(":your-app")
+include(":path-to-this-library") // For local development
 ```
 
-Add the dependency:
-
-```gradle
-dependencies {
-    implementation 'com.github.anil098421:MyDemoLibrary:v1.0.3'
-}
-```
-
-Or in Kotlin DSL:
+#### In your app's build.gradle.kts file:
 
 ```kotlin
 dependencies {
-    implementation("com.github.anil098421:MyDemoLibrary:v1.0.3")
+    // For published version
+    implementation("com.example.myapplication:app:1.0.0") 
+    
+    // OR for local development
+    implementation(project(":path-to-this-library"))
 }
 ```
 
-## Usage
-
-Once you've added the dependency, you can use GifImageView in your layouts:
-
-```xml
-<pl.droidsonroids.gif.GifImageView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:src="@drawable/your_gif_file" />
-```
-
-Or programmatically:
+### 2. Use GIF drawables in your application
 
 ```kotlin
-val gifImageView = GifImageView(this)
-gifImageView.setImageResource(R.drawable.your_gif_file)
+import pl.droidsonroids.gif.GifImageView
+
+// In your XML layout
+// <pl.droidsonroids.gif.GifImageView
+//    android:id="@+id/gifView"
+//    android:layout_width="match_parent"
+//    android:layout_height="wrap_content"
+//    android:src="@drawable/your_gif" />
+
+// In your Activity/Fragment
+val gifImageView = findViewById<GifImageView>(R.id.gifView)
+// Additional configuration as needed
 ```
 
-## License
+## Publishing
 
-This library is a wrapper around the android-gif-drawable library, which is distributed under the MIT License. 
+To publish this library locally:
+
+```
+./gradlew publishToMavenLocal
+```
+
+This will make the library available in your local Maven repository. 

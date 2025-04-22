@@ -1,18 +1,18 @@
 plugins {
     id("com.android.library")
-    alias(libs.plugins.kotlin.android)
-    `maven-publish`
+    id("org.jetbrains.kotlin.android")
+    id("maven-publish")
 }
 
 android {
-    namespace = "com.giflib.android"
+    namespace = "com.example.myapplication"
     compileSdk = 35
 
     defaultConfig {
         minSdk = 24
-        targetSdk = 35
-
+        
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
     
 
@@ -46,13 +46,13 @@ android {
 }
 
 dependencies {
-    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.29")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.android.gif.drawable)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -63,9 +63,17 @@ afterEvaluate {
         publications {
             create<MavenPublication>("release") {
                 from(components["release"])
-                groupId = "com.giflib.android"
-                artifactId = "android-gif-drawable"
+                
+                groupId = "com.example.myapplication"
+                artifactId = "android-gif-library"
                 version = "1.0.0"
+            }
+        }
+        
+        repositories {
+            maven {
+                name = "localRepo"
+                url = uri("${project.buildDir}/repo")
             }
         }
     }
