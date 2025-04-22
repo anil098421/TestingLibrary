@@ -8,5 +8,7 @@ plugins {
 
 // Required for JitPack
 tasks.register("publishToMavenLocal") {
-    dependsOn(gradle.includedBuild("app").task(":publishToMavenLocal"))
+    group = "publishing"
+    description = "Publish all artifacts to the local Maven repository"
+    dependsOn(":app:publishToMavenLocal")
 }

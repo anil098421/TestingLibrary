@@ -65,9 +65,10 @@ afterEvaluate {
             create<MavenPublication>("release") {
                 from(components["release"])
                 
+                // These coordinates are crucial for JitPack
                 groupId = "com.github.anil098421"
-                artifactId = "android-gif-library"
-                version = "1.0.0"
+                artifactId = "MyNewLibrary"
+                version = "v1.0.4"
                 
                 // Add all required POM elements for JitPack
                 pom {

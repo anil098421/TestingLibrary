@@ -24,7 +24,7 @@ Add the dependency to your app's build.gradle.kts:
 
 ```kotlin
 dependencies {
-    implementation("com.github.anil098421:MyNewLibrary:1.0.0") 
+    implementation("com.github.anil098421:MyNewLibrary:v1.0.4") 
 }
 ```
 
@@ -74,5 +74,4 @@ val gifImageView = findViewById<GifImageView>(R.id.gifView)
 ./gradlew publishToMavenLocal
 ```
 
-This will make the library available in your local Maven repository. 
-This will make the library available in your local Maven repository. 
+This will make the library available in your local Maven repository.
