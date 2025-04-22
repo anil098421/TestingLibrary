@@ -20,9 +20,11 @@ dependencyResolutionManagement {
             dirs("app/libs")
         }
         maven { url = uri("https://jitpack.io") }
+        
+
     }
 }
 
-rootProject.name = "MyNewLibrary"
+rootProject.name = "My Application"
 include(":app")
  
